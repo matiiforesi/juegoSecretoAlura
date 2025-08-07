@@ -15,6 +15,7 @@ function numeroAleatorio() {
     if (arrayNumeros.length == nroMaximo) {
         asignarTexto('h1', '¡Fin del juego!');
         asignarTexto('.texto__parrafo', 'No quedan más números para adivinar. Por favor, recague la pagina');
+        document.querySelector('.container__boton').setAttribute('disabled', true);
     } else if (arrayNumeros.includes(nro)) {
         return numeroAleatorio();
     } else {
@@ -45,10 +46,10 @@ function verificarNro() {
     if (nroUsuario === numeroAleatorioGenerado) {
         asignarTexto('h1', '¡Ganaste!');
         //asignarTexto('.texto__parrafo', `¡Felicidades! Acertaste en ${intentos} ${intentos === 1 ? 'intento' : 'intentos'}`);
-        asignarTexto('.texto__parrafo', `¡Felicidades! Te quedan ${vidas} ${vidas === 1 ? 'intento' : 'intentos'}`);
+        asignarTexto('.texto__parrafo', `¡Felicidades! Acertaste el número en ${3 - vidas + 1} ${3 - vidas + 1 === 1 ? 'intento' : 'intentos'}`);
         document.querySelector('#reiniciar').removeAttribute('disabled');
     } else if (nroUsuario < numeroAleatorioGenerado) {
-        asignarTexto('.texto__parrafo', `El número es menor. Vidas restantes: ${vidas - 1}/${vidas}`);
+        asignarTexto('.texto__parrafo', `El número es mayor. Vidas restantes: ${vidas - 1}/${vidas}`);
         vidas--;
         //intentos++;
         limpiarInput();
